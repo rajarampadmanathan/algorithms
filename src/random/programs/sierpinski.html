@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<canvas id="sierpinskiCanvas" width="600" height="600" style="border:1px solid #d3d3d3;"></canvas>
+</br>
+<canvas id="sierpinskiTriCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
+
+Your browser does not support the HTML5 canvas tag.</canvas>
+ 
+<script>
+function sierpinski(Ax,Ay,Bx,By,Cx,Cy,d,ctx) {
+    if(d >0){
+	sierpinski(Ax,Ay,(Ax+Bx)/2,(Ay+By)/2,(Ax+Cx)/2,(Ay+Cy)/2,d-1,ctx);
+	sierpinski((Ax+Bx)/2,(Ay+By)/2,Bx,By,(Bx+Cx)/2,(By+Cy)/2,d-1,ctx);
+	sierpinski((Ax+Cx)/2,(Ay+Cy)/2,(Bx+Cx)/2,(By+Cy)/2,Cx,Cy,d-1,ctx);
+	}
+	else{
+	ctx.moveTo(Ax,Ay);
+	ctx.lineTo(Bx,By);
+	ctx.lineTo(Cx,Cy);
+	ctx.lineTo(Ax,Ay);
+	}
+}
+ 
+function square(x,y,a,d,ctx) {
+    if(d >0){
+	//alert(x +" y:"+y +"new a:"+(a/3));
+	let newA=a/3;
+	square(x,y,newA,d-1,ctx);
+	square(x+newA,y,newA,d-1,ctx);
+	square(x+(2*newA),y,newA,d-1,ctx);
+	square(x,y+newA,newA,d-1,ctx);
+	//square(x+newA,y+newA,newA,d-1,ctx);
+	square(x+(2*newA),y+newA,newA,d-1,ctx);
+	square(x,y+(2*newA),newA,d-1,ctx);
+	square(x+newA,y+(2*newA),newA,d-1,ctx);
+	square(x+(2*newA),y+(2*newA),newA,d-1,ctx);
+	}else{
+	ctx.moveTo(x,y);
+	ctx.lineTo(x+a,y);
+	ctx.lineTo(x+a,y+a);
+	ctx.lineTo(x,y+a);
+	ctx.lineTo(x,y);
+	}
+}
+ 
+var ctx=document.getElementById("sierpinskiCanvas").getContext("2d");
+var ctxTri=document.getElementById("sierpinskiTriCanvas").getContext("2d");
+//sierpinski(50,400,250,400,150,200,3,ctx);
+square(10,10,580,2,ctx);
+ctx.fillStyle = '#00FF00';
+ctx.fill();
+ctx.strokeStyle = 'black';
+ctx.lineWidth = 2;
+ctx.stroke();
+</script>
+ 
+</body>
+</html>
