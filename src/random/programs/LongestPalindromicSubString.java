@@ -12,14 +12,14 @@ public class LongestPalindromicSubString {
         }
 		System.out.println("Length is: " + 
                                  longestPalSubstr(str));
-		
-		manichers("abba".toCharArray());
-		manichers("abbababba".toCharArray());
-		manichers("babcbaabcbaccba".toCharArray());
-		manichers("cdbabcbabdab".toCharArray());
+		LongestPalindromicSubString lpString=new LongestPalindromicSubString();
+		lpString.manichers("abba".toCharArray());
+		lpString.manichers("abbababba".toCharArray());
+		lpString.manichers("babcbaabcbaccba".toCharArray());
+		lpString.manichers("cdbabcbabdab".toCharArray());
 	}
 
-	public static int manichers(char[] str) {
+	public int manichers(char[] str) {
 		int length=0;
 		System.out.println(str);
 		char[] inpt=new char[2* str.length+1];
@@ -34,7 +34,7 @@ public class LongestPalindromicSubString {
 		int[] lpsLength=new int[2* str.length+1];
 		int start=0,end=0, newCenter=0;
 		for(int i=0;i<lpsLength.length;) {
-			System.out.println("New Center:"+i+" , start:"+start+",end:"+end);
+		//	System.out.println("New Center:"+i+" , start:"+start+",end:"+end);
 			while(start>0 && end <inpt.length-1 && inpt[start-1]==inpt[end+1]) {
 				start--;
 				end++;
@@ -60,7 +60,7 @@ public class LongestPalindromicSubString {
 			end=i+lpsLength[i]/2;
 			
 		}
-		System.out.println(Arrays.toString(lpsLength));
+		//System.out.println(Arrays.toString(lpsLength));
 		
 		/*for(int i:lpsLength) {
 		if(i/2>length) {

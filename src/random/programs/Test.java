@@ -1,12 +1,21 @@
 package random.programs;
+
+import java.util.ArrayList;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+
 public class Test extends Object{
 	
 	int state=0;
     final int a=0;
 	final public synchronized void testMethod() {
-    	Runtime.getRuntime().gc();
-    	System.gc();
-        	if(state==0) {
+		System.gc();
+		ReentrantLock rl=new ReentrantLock();
+			if(state==0) {
         	System.out.println("1");
         	state=1;
         	try {
@@ -29,7 +38,16 @@ public class Test extends Object{
        
     }
     public static void main(String[] args) throws InterruptedException {
-        final Test test1 = new Test();
+    	ArrayList<Integer> al=new ArrayList<>();
+    	al.add(1);
+    	al.add(2);
+    	al.add(1);
+    	al.add(3);
+    	al.add(2);
+    	al.add(1);
+    	al.stream().map(i-> i).collect(Collectors.groupingBy(p->p,Collectors.counting())).forEach((x,y)->System.out.println(x+":"+y));
+    	System.out.println(Thread.currentThread().isDaemon());
+    	final Test test1 = new Test();
         Thread t1 = new Thread() { public void run() { while(true) {test1.testMethod(); }} };
         Thread t2 = new Thread() { public void run() { while(true) {test1.testMethod(); } }};
         Thread t3 = new Thread() { public void run() { while(true) {test1.testMethod(); } }};

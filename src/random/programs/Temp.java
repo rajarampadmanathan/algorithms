@@ -1,29 +1,58 @@
 package random.programs;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+abstract class A{
+	
+public void print1() {
+	System.out.println("Class A");
+	
+	print();
+	print2();
+	
+}	
+
+ private void print() {
+
+	System.out.println("Class A");
+	
+}	
+
+abstract void print2();
+
+
+}
+
 
 @A1
-public class Temp extends Test{
+public class Temp extends A{
 
+	 void print() {
+		System.out.println("Temp");
+	}
 	
 	public static void main(String[] args) {
-	/*	int[] numbers=new int[] {1,2,3,4,5,6};
-		changeArray(numbers);
-		System.out.println(Arrays.asList(numbers).toArray());*/
-		System.out.println(Temp.class.getAnnotations().length);
+		System.out.println(2 );
+		A a=new Temp();
+		//a.print1();
+		int c='\u0000';
+		if(c=='\u0000') {
+			System.out.println("Equal"+c);
+		}
+		
+		int aa=5;
 		
 	}
 
-	private static void changeArray(int[] numbers) {
-		
-		System.out.println(numbers.getClass().getCanonicalName());
-		int temp=numbers[0];
-		numbers[0]=numbers[1];
-		numbers[1]=temp;
+	void print2() {
+		System.out.println("Temp...Print 2");
 		
 	}
+
+	
 }
+
