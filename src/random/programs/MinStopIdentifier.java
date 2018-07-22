@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 class MinStopIdentifier {
 	public static void main(String[] args) {
 		System.out.println(new MinStopIdentifier().numBusesToDestination(new int[][] {{1,2,7},{3,6,7}}, 1, 6));
@@ -25,7 +26,7 @@ class MinStopIdentifier {
         HashSet<Integer> visited =new HashSet<Integer>();
         queue.add(new Point(S,0));
         visited.add(S);
-        while(queue.peek() !=null){
+        while(!queue.isEmpty() ){
             Point p=queue.poll();
             Arrays.asList(p.getClass().getDeclaredMethods()).stream().map(a->a.getName()).forEach(System.out::println);
             int bus=(int)p.getX();

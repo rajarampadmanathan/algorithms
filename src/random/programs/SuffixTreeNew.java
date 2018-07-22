@@ -211,8 +211,7 @@ class NewSuffixNode {
 	NewEnd end;
 	NewSuffixNode suffixLink;
 	NewSuffixNode[] edges = new NewSuffixNode[256];
-	int startIndex = -1;
-
+	
 	public NewSuffixNode(int start, NewEnd end) {
 		this.start = start;
 		this.end = end;

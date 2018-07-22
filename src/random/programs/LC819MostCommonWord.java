@@ -29,21 +29,16 @@ public class LC819MostCommonWord {
 
 	public static void main(String[] args) {
 		System.out.println("Ans:"+
-				mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", new String[] { "hit" }));
+				mostCommonWord("Bob hit a ball, the hit BALL ? ' ;. ? ' ;. ? ' ;. ? ' ;.? ' ;. flew far after it was hit.", new String[] { "hit" }));
 	}
 
 	public static String mostCommonWord(String paragraph, String[] banned) {
 		String word = "";
 		if (paragraph == null || paragraph.length() == 0)
 			return "";
-		paragraph=paragraph.replaceAll("!", "");
-		paragraph=paragraph.replaceAll("\\?", "");
-		paragraph=paragraph.replaceAll("'", "");
-		paragraph=paragraph.replaceAll(",", "");
-		paragraph=paragraph.replaceAll(";", "");
-		paragraph=paragraph.replace(".", "");
+		paragraph=paragraph.replaceAll("[^a-zA-Z\\s]", "");
 		paragraph=paragraph.toLowerCase();
-		  word=Stream.of(paragraph.split(" ")).collect(Collectors.groupingBy(x->x,Collectors.counting())).entrySet().
+		  word=Stream.of(paragraph.split(" ")).filter(s-> !s.isEmpty()).collect(Collectors.groupingBy(x->x,Collectors.counting())).entrySet().
 		  stream().sorted((o1,o2)-> {return o2.getValue().compareTo(o1.getValue());}).filter(x->{
 			  for(int i=0;i<banned.length;i++) {
 			  if(x.getKey().equals(banned[i]))

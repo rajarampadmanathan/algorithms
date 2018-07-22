@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class ArmstrongNumber {
 
 	public static void main(String[] args) {
-int iComp=-1234;
+int iComp=-1;
 String bIComp=Integer.toBinaryString(iComp);
 System.out.println(bIComp);
 

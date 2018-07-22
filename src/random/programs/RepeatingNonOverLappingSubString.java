@@ -6,8 +6,8 @@ import java.util.Set;
 public class RepeatingNonOverLappingSubString {
 
 	public static void main(String[] args) {
-		String s = new String("zbcdefghijklmnopqrstvwxyaa");
-		longestRepeatingSubString(s);
+		String s = new String("zbcdefghijklmnopqrstvwxfghiyaa");
+		//longestRepeatingSubString(s);
 		longestRepeatingNonOverlapSubString(s);
 	}
 
@@ -23,7 +23,7 @@ public class RepeatingNonOverLappingSubString {
 				for (int j = window+i; j + window <= s.length(); j++) {
 					counter++;
 					String s2 = s.substring(j, j+window);
-					//System.out.println(s2);
+					System.out.println(s2);
 					if (s1.equals(s2)) {
 						System.out.println(s1+" after"+counter+" iterations.");
 						return;

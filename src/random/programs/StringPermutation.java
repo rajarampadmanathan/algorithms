@@ -6,7 +6,9 @@ import java.util.Map;
 public class StringPermutation {
 
 	public static void main(String[] args) {
-		String s="ABC";
+		String s="ABABB";
+		System.out.println(s.substring(0,0));
+		System.out.println(s.substring(0,1));
 		LinkedHashMap<Character, Integer> map=new LinkedHashMap<Character,Integer>();
 		for(char c:s.toCharArray()) {
 				map.compute(c, (key,value)->{

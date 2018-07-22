@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class IPDetection {
 
-	static String[] ips = new String[] { "fe80::8c6:932c:c292:9afb%5", "152.140.152.3" };
+	static String[] ips = new String[] { "fe80::8c6:932c:c292:9afb%5", "152.140.152.8883" };
 
 	public static void main(String[] args) {
 		validateIps();

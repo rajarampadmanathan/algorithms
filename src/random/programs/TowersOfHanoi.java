@@ -9,13 +9,11 @@ public class TowersOfHanoi {
 	static int count=0;
    public void solve(int n, List<Integer> start, List<Integer> auxiliary, List<Integer> end) {
        if (n == 1) {
-           end.add(start.get(start.size()-1));
-           start.remove(start.size()-1);
+           end.add(start.remove(start.size()-1));
            count+=1;
        } else {
            solve(n - 1, start, end, auxiliary);
-           end.add(start.get(start.size()-1));
-           start.remove(start.size()-1);
+           end.add(start.remove(start.size()-1));
            count+=1;
            solve(n - 1, auxiliary, start, end);
        }

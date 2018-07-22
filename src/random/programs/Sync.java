@@ -17,7 +17,7 @@ public class Sync extends Object{//extends Thread{
 	
 	public  int getValue() {
 		//synchronized (Sync.class) {
-		synchronized (Sync.class) {
+		synchronized (this) {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
